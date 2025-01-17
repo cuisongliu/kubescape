@@ -2,7 +2,7 @@ package metrics
 
 import (
 	"context"
-	"fmt"
+	"strings"
 	"sync"
 
 	"github.com/kubescape/go-logger"
@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	METER_NAME         = "github.com/kubescape/kubescape/v2"
+	METER_NAME         = "github.com/kubescape/kubescape/v3"
 	METRIC_NAME_PREFIX = "kubescape"
 )
 
@@ -31,7 +31,7 @@ func Init() {
 		meterProvider := otel.GetMeterProvider()
 		meter := meterProvider.Meter(METER_NAME)
 		metricName := func(name string) string {
-			return fmt.Sprintf("%s_%s", METRIC_NAME_PREFIX, name)
+			return strings.Join([]string{METRIC_NAME_PREFIX, name}, "_")
 		}
 
 		if kubernetesResourcesCount, err = meter.Int64UpDownCounter(metricName("kubernetes_resources_count")); err != nil {

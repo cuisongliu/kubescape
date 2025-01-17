@@ -8,13 +8,13 @@ Using ARMO Platform, you will save valuable time and make spot-on hardening deci
 
 1. Install Kubescape
     ```
-    curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+    curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/docs/providers/install.sh | /bin/bash
     ```
     > Alternatively, you can [install Kubescape using package managers](../installation.md#installation)
 
-2. Scan Kubescape with the `--create-account` flag
+2. Scan Kubescape with the `--server` flag
     ```
-    kubescape scan --create-account
+    kubescape scan --server api.armosec.io
     ```
 
 The scan results will be submitted to the ARMO Platform.
